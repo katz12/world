@@ -1,4 +1,5 @@
 import React from 'react';
+import { Table } from 'semantic-ui-react';
 
 const QueryResult = ({ results }) => {
   if (results == null) {
@@ -6,27 +7,27 @@ const QueryResult = ({ results }) => {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
+    <Table>
+      <Table.Header>
+        <Table.HeaderCell>
           { results.head.vars.map((v, i) => <td key={i}>{v}</td>) }
-        </tr>
-      </thead>
-      <tbody>
+        </Table.HeaderCell>
+      </Table.Header>
+      <Table.Body>
         { results.results.bindings.map((binding, i) =>
-          <tr key={i}>
+          <Table.Row key={i}>
             { results.head.vars.map((v, i) =>
-              <td key={i}>
+              <Table.Cell key={i}>
               {binding[v]
                 ? binding[v].value
                 : 'Value unavailable'
               }
-              </td>
+              </Table.Cell>
             ) }
-          </tr>
+          </Table.Row>
         ) }
-      </tbody>
-    </table>
+      </Table.Body>
+    </Table>
   )
 };
 

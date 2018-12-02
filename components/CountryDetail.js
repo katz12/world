@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Header } from 'semantic-ui-react';
 
 import QueryViewer from './QueryViewer';
 import { getPopulationQuery, countryCodeMap } from '../api/dbpedia';
@@ -8,12 +9,12 @@ const CountryDetail = ({ selectedCountryCode }) => {
     return null;
   } else {
     return (
-      <div>
-        <h1>
+      <Container>
+        <Header as='h2' dividing style={{marginTop: '1em'}}>
           Querying data from: {countryCodeMap[selectedCountryCode]}
-        </h1>
+        </Header>
         <QueryViewer key={selectedCountryCode} initialQuery={getPopulationQuery(selectedCountryCode)} />
-      </div>
+      </Container>
     )
   }
 }

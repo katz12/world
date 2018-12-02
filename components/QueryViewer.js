@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Header, Form, TextArea } from 'semantic-ui-react';
 
 import QueryResult from './QueryResult';
 import { query as Query } from '../api/dbpedia';
@@ -14,10 +15,12 @@ const QueryViewer = ({ initialQuery }) => {
 
   return (
     <div>
-      <h2>Query:</h2>
-      <textarea value={query}/>
+      <Header as='h3'>Query</Header>
+      <Form>
+        <TextArea value={query}/>
+      </Form>
 
-      <h2>Results:</h2>
+      <Header as='h3'>Results</Header>
       <QueryResult results={results} />
     </div>
   )
