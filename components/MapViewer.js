@@ -11,6 +11,8 @@ const MapViewer = () => {
       <VectorMap
         map='world_mill'
         zoomOnScroll={false}
+        regionsSelectable={true}
+        regionsSelectableOne={true}
         onRegionClick={(_e, code) => setSelectedCountryCode(code)}
         containerStyle={{
           width: '100%',
