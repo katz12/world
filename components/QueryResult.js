@@ -9,9 +9,11 @@ const QueryResult = ({ results }) => {
   return (
     <Table>
       <Table.Header>
-        <Table.HeaderCell>
-          { results.head.vars.map((v, i) => <td key={i}>{v}</td>) }
-        </Table.HeaderCell>
+        <Table.Row>
+          { results.head.vars.map((v, i) =>
+            <Table.HeaderCell key={i}>{v}</Table.HeaderCell>
+          ) }
+        </Table.Row>
       </Table.Header>
       <Table.Body>
         { results.results.bindings.map((binding, i) =>
