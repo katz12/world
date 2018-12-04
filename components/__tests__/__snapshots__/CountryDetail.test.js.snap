@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not render without props 1`] = `""`;
+
+exports[`should render with props 1`] = `
+"<Container>
+  <Header as=\\"h2\\" dividing={true} style={{...}}>
+    Querying data from: 
+    http://dbpedia.org/resource/United_States
+  </Header>
+  <QueryViewer initialQuery=\\"SELECT * WHERE {\\\\n\\\\tOPTIONAL {<http://dbpedia.org/resource/United_States> dbo:populationTotal ?populationTotal.}\\\\n}\\" />
+</Container>"
+`;

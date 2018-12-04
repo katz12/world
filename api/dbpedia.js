@@ -10,9 +10,9 @@ export const query = (sparql) => {
 }
 
 export const getPopulationQuery = (countryCode) =>
-  `SELECT * WHERE {
-    OPTIONAL {<${countryCodeMap[countryCode]}> dbo:populationTotal ?populationTotal.}
-  }`
+  countryCodeMap[countryCode]
+  ? `SELECT * WHERE {\n\tOPTIONAL {<${countryCodeMap[countryCode]}> dbo:populationTotal ?populationTotal.}\n}`
+  : null;
 
 // DBpedia does not have any standard for getting countries from country codes
 // This was mostly done using dbo:wikiPageRedirects via /tools/country-map-builder.js
