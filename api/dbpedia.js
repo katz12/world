@@ -1,6 +1,12 @@
 export const query = (sparql) => {
   return fetch(`http://dbpedia.org/sparql?query=${encodeURIComponent(sparql)}&format=${encodeURIComponent('application/sparql-results+json')}`)
-         .then(r => r.json())
+         .then(r => {
+           if (r.status == 200) {
+             return r.json();
+           } else {
+             return r.text().then((error) => Promise.reject({message: error}));
+           }
+         })
 }
 
 export const getPopulationQuery = (countryCode) =>

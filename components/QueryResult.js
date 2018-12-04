@@ -1,13 +1,19 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
 
-const QueryResult = ({ results }) => {
-  if (results == null) {
+const QueryResult = ({ results, error }) => {
+  if (results == null && error == null) {
     return null;
   }
 
+  if (error) {
+    return (
+      <div>{error}</div>
+    )
+  }
+
   return (
-    <Table>
+    <Table celled>
       <Table.Header>
         <Table.Row>
           { results.head.vars.map((v, i) =>

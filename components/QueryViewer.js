@@ -8,10 +8,21 @@ import { query as Query } from '../api/dbpedia';
 const QueryViewer = ({ initialQuery }) => {
   const [query, setQuery] = useState(initialQuery);
   const [results, setResults] = useState(null);
+  const [error, setError] = useState(null);
+  const [running, setRunning] = useState(true);
 
   useEffect(() => {
-    Query(query).then(setResults)
-  }, [query])
+    if (running) {
+      setError(null);
+      setResults(null);
+      Query(query)
+        .then(setResults).then(() => setRunning(false))
+        .catch((e) => {
+          setError(e.message);
+          setRunning(false)
+        });
+    }
+  }, [running])
 
   return (
     <div>
@@ -21,7 +32,7 @@ const QueryViewer = ({ initialQuery }) => {
       </Form>
 
       <Header as='h3'>Results</Header>
-      <QueryResult results={results} />
+      <QueryResult results={results} error={error} />
     </div>
   )
 };
