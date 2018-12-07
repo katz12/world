@@ -8,6 +8,6 @@ exports[`should render with props 1`] = `
     Querying data from: 
     http://dbpedia.org/resource/United_States
   </Header>
-  <QueryViewer initialQuery=\\"SELECT * WHERE {\\\\n\\\\tOPTIONAL {<http://dbpedia.org/resource/United_States> dbo:populationTotal ?populationTotal.}\\\\n}\\" />
+  <QueryViewer initialQuery=\\"SELECT * WHERE {\\\\n\\\\tOPTIONAL {<http://dbpedia.org/resource/United_States> dbo:populationTotal ?populationTotal.}\\\\n}\\" countryResource=\\"http://dbpedia.org/resource/United_States\\" />
 </Container>"
 `;
