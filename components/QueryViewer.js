@@ -1,11 +1,11 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Header, Form, TextArea } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { Header, Form } from 'semantic-ui-react';
 
+import QueryEditor from './QueryEditor'
 import QueryResult from './QueryResult';
 import { query as Query } from '../api/dbpedia';
 
-const QueryViewer = ({ initialQuery }) => {
+const QueryViewer = ({ initialQuery, countryResource }) => {
   const [query, setQuery] = useState(initialQuery);
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
@@ -28,7 +28,12 @@ const QueryViewer = ({ initialQuery }) => {
     <div>
       <Header as='h3'>Query</Header>
       <Form>
-        <TextArea value={query}/>
+        <Form.Field>
+          <QueryEditor query={query} onQueryChange={query => setQuery(query)} countryResource={countryResource} />
+        </Form.Field>
+        <Form.Button primary loading={running} onClick={() => setRunning(true)}>
+          Run
+        </Form.Button>
       </Form>
 
       <Header as='h3'>Results</Header>

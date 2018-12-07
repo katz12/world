@@ -13,7 +13,8 @@ const CountryDetail = ({ selectedCountryCode }) => {
         <Header as='h2' dividing style={{marginTop: '1em'}}>
           Querying data from: {countryCodeMap[selectedCountryCode]}
         </Header>
-        <QueryViewer key={selectedCountryCode} initialQuery={getPopulationQuery(selectedCountryCode)} />
+        <QueryViewer key={selectedCountryCode} initialQuery={getPopulationQuery(selectedCountryCode)}
+                     countryResource={countryCodeMap[selectedCountryCode]}/>
       </Container>
     )
   }
